@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="description" content="Kokkoriko — Coming Soon. Kameragurte mit Charakter.">
+  <title>KOKKORIKO — Coming Soon</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body { background: #0b0b0b; color: #f2f0eb; font-family: Arial, Helvetica, sans-serif; }
+    .page { min-height: 100svh; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; isolation: isolate; padding: 4rem 1rem 8rem; }
+    .page::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(ellipse at 50% 38%, #171717 0%, #0b0b0b 65%); }
+    .strap { position: absolute; z-index: -1; width: 100%; height: min(39vw, 43vh); min-height: 185px; bottom: 4%; left: 0; background: url('kokkoriko-strap.png') center bottom / cover no-repeat; pointer-events: none; }
+    .content { text-align: center; width: 100%; position: relative; z-index: 1; margin-top: -13vh; }
+    h1 { font-size: clamp(2.45rem, 8.1vw, 8rem); font-weight: 700; letter-spacing: .11em; margin: 0 0 1.3rem; line-height: 1.15; padding-left: .11em; }
+    .subtitle { margin: 0; color: #c9c7c4; font-size: clamp(.85rem, 1.55vw, 1.5rem); font-weight: 300; letter-spacing: .58em; padding-left: .58em; }
+    .countdown { display: flex; justify-content: center; align-items: stretch; margin: 3rem auto 0; max-width: 600px; }
+    .unit { min-width: 0; flex: 1; padding: 0 .6rem; }
+    .unit + .unit { border-left: 1px solid #5c5a58; }
+    .number { display: block; font-size: clamp(2rem, 4.3vw, 4rem); font-weight: 300; font-variant-numeric: tabular-nums; line-height: 1.1; }
+    .label { display: block; margin-top: .65rem; color: #c9c7c4; font-size: clamp(.52rem, 1vw, .75rem); letter-spacing: .25em; }
+    footer { position: absolute; bottom: 2rem; left: clamp(1.2rem, 5vw, 5rem); z-index: 2; }
+    footer a { display: inline-flex; align-items: center; gap: .8rem; text-decoration: none; color: #e5e3e0; letter-spacing: .22em; font-size: clamp(.65rem, 1vw, .85rem); }
+    footer a:hover { color: white; }
+    footer svg { width: 21px; height: 21px; flex: none; }
+    @media (max-width: 650px) { .page { padding-bottom: 10rem; } .content { margin-top: -16vh; } h1 { letter-spacing: .065em; padding-left: .065em; } .subtitle { letter-spacing: .35em; padding-left: .35em; } .countdown { margin-top: 2.2rem; } .unit { padding: 0 .35rem; } .strap { height: 34vh; bottom: 5%; background-size: auto 100%; } footer { left: 0; width: 100%; text-align: center; bottom: 1.7rem; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="strap" aria-hidden="true"></div>
+    <section class="content" aria-label="Kokkoriko startet bald">
+      <h1>KOKKORIKO</h1>
+      <p class="subtitle">COMING SOON</p>
+      <div class="countdown" role="timer" aria-label="Zeit bis zum 1. Januar 2027">
+        <div class="unit"><span class="number" id="days">00</span><span class="label">DAYS</span></div>
+        <div class="unit"><span class="number" id="hours">00</span><span class="label">HOURS</span></div>
+        <div class="unit"><span class="number" id="minutes">00</span><span class="label">MINUTES</span></div>
+        <div class="unit"><span class="number" id="seconds">00</span><span class="label">SECONDS</span></div>
+      </div>
+    </section>
+    <footer><a href="mailto:info@kokkoriko.de"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg>info@kokkoriko.de</a></footer>
+  </main>
+  <script>
+    // 01.01.2027, 00:00 Uhr in Deutschland (MEZ = UTC+1)
+    const target = new Date('2026-12-31T23:00:00Z').getTime();
+    const ids = ['days','hours','minutes','seconds'];
+    function updateCountdown() {
+      const remaining = Math.max(0, target - Date.now());
+      const values = [Math.floor(remaining / 86400000), Math.floor(remaining / 3600000) % 24, Math.floor(remaining / 60000) % 60, Math.floor(remaining / 1000) % 60];
+      values.forEach((value, i) => document.getElementById(ids[i]).textContent = String(value).padStart(2, '0'));
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
