@@ -12,7 +12,7 @@
     body { background: #0b0b0b; color: #f2f0eb; font-family: Arial, Helvetica, sans-serif; }
     .page { min-height: 100svh; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; isolation: isolate; padding: 4rem 1rem 8rem; }
     .page::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(ellipse at 50% 38%, #171717 0%, #0b0b0b 65%); }
-    .strap { position: absolute; z-index: -1; width: 100%; height: min(39vw, 43vh); min-height: 185px; bottom: 4%; left: 0; background: url('kokkoriko-strap.png') center bottom / cover no-repeat; pointer-events: none; }
+    .strap { position: absolute; z-index: -1; inset: 0; background: url('kokkoriko-strap.png') center bottom / cover no-repeat; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 35%, #000 74%, #000 100%); mask-image: linear-gradient(to bottom, transparent 0%, transparent 35%, #000 74%, #000 100%); }
     .content { text-align: center; width: 100%; position: relative; z-index: 1; margin-top: -13vh; }
     h1 { font-size: clamp(2.45rem, 8.1vw, 8rem); font-weight: 700; letter-spacing: .11em; margin: 0 0 1.3rem; line-height: 1.15; padding-left: .11em; }
     .subtitle { margin: 0; color: #c9c7c4; font-size: clamp(.85rem, 1.55vw, 1.5rem); font-weight: 300; letter-spacing: .58em; padding-left: .58em; }
@@ -25,7 +25,7 @@
     footer a { display: inline-flex; align-items: center; gap: .8rem; text-decoration: none; color: #e5e3e0; letter-spacing: .22em; font-size: clamp(.65rem, 1vw, .85rem); }
     footer a:hover { color: white; }
     footer svg { width: 21px; height: 21px; flex: none; }
-    @media (max-width: 650px) { .page { padding-bottom: 10rem; } .content { margin-top: -16vh; } h1 { letter-spacing: .065em; padding-left: .065em; } .subtitle { letter-spacing: .35em; padding-left: .35em; } .countdown { margin-top: 2.2rem; } .unit { padding: 0 .35rem; } .strap { height: 34vh; bottom: 5%; background-size: auto 100%; } footer { left: 0; width: 100%; text-align: center; bottom: 1.7rem; } }
+    @media (max-width: 650px) { .page { padding-bottom: 10rem; } .content { margin-top: -16vh; } h1 { letter-spacing: .065em; padding-left: .065em; } .subtitle { letter-spacing: .35em; padding-left: .35em; } .countdown { margin-top: 2.2rem; } .unit { padding: 0 .35rem; } .strap { background-position: 64% bottom; } footer { left: 0; width: 100%; text-align: center; bottom: 1.7rem; } }
   </style>
 </head>
 <body>
